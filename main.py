@@ -11,7 +11,9 @@ screen.tracer(0)
 
 p1 = Player()
 
-
+# Event Listener
+screen.listen()
+screen.onkeypress(p1.move, "Up")
 
 game_is_on = True
 while game_is_on:
