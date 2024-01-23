@@ -18,6 +18,9 @@ class Car(Turtle):
     def move(self):
         self.goto(self.xcor() - STARTING_MOVE_DISTANCE, self.ycor())
 
+    def delete(self):
+        self.delete()
+
 class CarManager():
     
     def __init__(self) -> None:
@@ -30,3 +33,14 @@ class CarManager():
     def move_cars(self):
         for car in self.cars:
             car.move()
+
+    def remove_outside_cars(self):
+        new_cars = []
+
+        for car in self.cars:
+            if car.xcor() > -320:
+                new_cars.append(car)
+            else:
+                car.hideturtle()
+
+        self.cars = new_cars

@@ -28,3 +28,4 @@ while game_is_on:
         cm.create_car()
     time_to_create_car = not time_to_create_car
     cm.move_cars()
+    cm.remove_outside_cars()
