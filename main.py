@@ -14,6 +14,8 @@ p1 = Player()
 
 cm = CarManager()
 
+score = Scoreboard()
+
 time_to_create_car = True
 
 # Event Listener
@@ -29,3 +31,6 @@ while game_is_on:
     time_to_create_car = not time_to_create_car
     cm.move_cars()
     cm.remove_outside_cars()
+    if p1.finish_line_reached:
+        score.increase_level()
+        p1.change_status()

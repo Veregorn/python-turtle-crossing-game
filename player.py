@@ -15,15 +15,15 @@ class Player(Turtle):
         self.left(90)
         self.finish_line_reached = False
 
+    def change_status(self):
+        self.finish_line_reached = not self.finish_line_reached
+
     def reset_position(self):
         self.goto(STARTING_POSITION)
 
     def move(self):
-        if self.finish_line_reached:
-            self.finish_line_reached = False
-        
         self.goto(0, self.ycor() + MOVE_DISTANCE)
 
         if self.ycor() > FINISH_LINE_Y:
-            self.finish_line_reached = True
+            self.change_status()
             self.reset_position()
