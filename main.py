@@ -34,3 +34,4 @@ while game_is_on:
     if p1.finish_line_reached:
         score.increase_level()
         p1.change_status()
+        cm.increase_cars_speed()
