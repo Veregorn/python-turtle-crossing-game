@@ -4,7 +4,7 @@ import random
 # Constants
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 3
 
 class Car(Turtle):
     def __init__(self, move_distance) -> None:
@@ -19,9 +19,6 @@ class Car(Turtle):
     def move(self):
         self.goto(self.xcor() - self.current_move_distance, self.ycor())
 
-    def delete(self):
-        self.delete()
-
     def increase_move_distance(self):
         self.current_move_distance += MOVE_INCREMENT
 
@@ -30,6 +27,9 @@ class CarManager():
     def __init__(self) -> None:
         self.cars = []
         self.current_move_distance = STARTING_MOVE_DISTANCE
+
+    def get_cars(self):
+        return self.cars
         
     def create_car(self):
         car = Car(self.current_move_distance)

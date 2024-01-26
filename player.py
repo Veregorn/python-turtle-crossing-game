@@ -27,3 +27,6 @@ class Player(Turtle):
         if self.ycor() > FINISH_LINE_Y:
             self.change_status()
             self.reset_position()
+
+    def get_y_coord(self):
+        return self.ycor()
