@@ -11,13 +11,13 @@ class Car(Turtle):
         super().__init__()
         self.shape('square')
         self.shapesize(stretch_wid=1, stretch_len=2)
-        self.color(COLORS[random.randint(0, len(COLORS) - 1)])
+        self.color(random.choice(COLORS))
         self.penup()
-        self.goto(320, random.randint(-300, 300))
+        self.goto(320, random.randint(-250, 300)) # So the player have some space to init his movement
         self.current_move_distance = move_distance
 
     def move(self):
-        self.goto(self.xcor() - self.current_move_distance, self.ycor())
+        self.backward(self.current_move_distance)
 
     def increase_move_distance(self):
         self.current_move_distance += MOVE_INCREMENT

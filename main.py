@@ -10,9 +10,9 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
-p1 = Player()
+player = Player()
 
-cm = CarManager()
+car_manager = CarManager()
 
 score = Scoreboard()
 
@@ -20,7 +20,7 @@ time_to_create_car = True
 
 # Event Listener
 screen.listen()
-screen.onkeypress(p1.move, "Up")
+screen.onkeypress(player.move, "Up")
 
 game_is_on = True
 while game_is_on:
@@ -28,21 +28,21 @@ while game_is_on:
     screen.update()
     
     if time_to_create_car: # So cars only creates one of every two refreshes
-        cm.create_car()
+        car_manager.create_car()
     
     time_to_create_car = not time_to_create_car
     
-    cm.move_cars()
-    cm.remove_outside_cars()
+    car_manager.move_cars()
+    car_manager.remove_outside_cars()
     
-    if p1.finish_line_reached:
+    if player.finish_line_reached:
         score.increase_level()
-        p1.change_status()
-        cm.increase_cars_speed()
+        player.change_status()
+        car_manager.increase_cars_speed()
 
     # Detect collision of player with cars
-    for car in cm.get_cars():
-        if car.distance(p1) < 16:
+    for car in car_manager.get_cars():
+        if car.distance(player) < 16:
             game_is_on = False
 
 score.game_over()
